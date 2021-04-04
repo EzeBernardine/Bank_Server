@@ -13,7 +13,7 @@ const SEC_KEY = "Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X";
 app.get("/", async (req, res) => {
   res.send("Bank server");
 });
-  
+
 app.get("/banks", async (req, res) => {
   const country = "NG";
   await axios
@@ -21,7 +21,7 @@ app.get("/banks", async (req, res) => {
       headers: { Authorization: `${SEC_KEY}` },
     })
     .then((response) => res.send(response.data))
-    .catch((err) => console.log(err));
+    .catch((err) => res);
 });
 
 app.get("/transactions", async (req, res) => {
@@ -30,7 +30,7 @@ app.get("/transactions", async (req, res) => {
       headers: { Authorization: `${SEC_KEY}` },
     })
     .then((response) => res.send(response.data))
-    .catch((err) => console.log(err));
+    .catch((err) => res);
 });
 
 app.post("/verify_account", async (req, res) => {
@@ -50,7 +50,7 @@ app.post("/verify_account", async (req, res) => {
       }
     )
     .then((response) => res.send(response.data))
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
 });
 
 app.post("/make_transfer", async (req, res) => {
@@ -75,7 +75,7 @@ app.post("/make_transfer", async (req, res) => {
       res.json(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      res.send(err);
     });
 });
 
