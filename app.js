@@ -10,6 +10,10 @@ app.use(cors());
 
 const SEC_KEY = "Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X";
 
+app.get("/", async (req, res) => {
+  res.send("Bank server");
+});
+  
 app.get("/banks", async (req, res) => {
   const country = "NG";
   await axios
