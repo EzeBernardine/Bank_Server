@@ -50,7 +50,7 @@ app.post("/verify_account", async (req, res) => {
       }
     )
     .then((response) => res.send(response.data))
-    .catch((err) => res.send(err));
+    .catch((err) => res.send(err.response.data));
 });
 
 app.post("/make_transfer", async (req, res) => {
@@ -75,7 +75,7 @@ app.post("/make_transfer", async (req, res) => {
       res.json(response.data);
     })
     .catch((err) => {
-      res.send(err);
+      res.send(err.response.data);
     });
 });
 
